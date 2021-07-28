@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="churrasTrincaApp.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Cores gerais-->
+            <Color x:Key="PrimaryColorTrinca">#FFD836</Color>
+            <!--Fonte dos ícones-->
+            <OnPlatform x:TypeArguments="x:String" x:Key="FontIcon">
+                <On Platform="Android" Value="TrincaIcons" />
+                <On Platform="iOS" Value="TrincaIcons" />
+            </OnPlatform>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

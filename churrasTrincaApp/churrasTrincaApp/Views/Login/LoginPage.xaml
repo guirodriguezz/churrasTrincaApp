@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:churrasTrincaApp.Controls"
+             xmlns:login="clr-namespace:churrasTrincaApp.ViewModels.Login" x:DataType="login:LoginPageViewModel"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True"
+             NavigationPage.HasNavigationBar="False"    
+             x:Class="churrasTrincaApp.Views.Login.LoginPage"
+             BackgroundColor="{DynamicResource PrimaryColorTrinca}">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand">
+            <Label Text="Agenda de Churras" FontFamily="TrincaExtraBold800" FontSize="22" TextColor="Black" Margin="0,70,0,0"/>
+            
+            <Label Text="Login" FontFamily="TrincaBold700" Margin="0,100,0,3" FontSize="11" TextColor="Black"/>
+
+            <Grid HorizontalOptions="CenterAndExpand" WidthRequest="210" HeightRequest="43">
+                <Frame HasShadow="False" BorderColor="AntiqueWhite" Padding="{OnPlatform Android='5,0,5,0', iOS='8,0,8,0'}" Margin="{OnPlatform Android='0,0,0,0', iOS='0,0,0,0'}" />
+
+                <controls:EntryTrinca
+                    HeightRequest="{OnPlatform iOS=40}"
+                    VerticalOptions="FillAndExpand"
+                    Placeholder="e-mail"
+                    Keyboard="Email"
+                    Margin="10,0,0,0"/>
+                
+            </Grid>
+
+            <Label Text="Senha" FontFamily="TrincaBold700" Margin="0,10,0,3" FontSize="11" TextColor="Black"/>
+
+            <Grid HorizontalOptions="CenterAndExpand" WidthRequest="210"  HeightRequest="43">
+                <Frame HasShadow="False" BorderColor="AntiqueWhite" Padding="{OnPlatform Android='5,0,5,0', iOS='8,0,8,0'}" Margin="{OnPlatform Android='0,0,0,0', iOS='0,0,0,0'}" />
+
+                <controls:EntryTrinca
+                    HeightRequest="{OnPlatform iOS=40}"
+                    VerticalOptions="FillAndExpand"
+                    Placeholder="senha"
+                    Keyboard="Numeric"
+                    IsPassword="True"
+                    FontFamily="TrincaRegular400"
+                    Margin="10,0,0,0"/>
+
+            </Grid>
+
+            <Button Margin="0,50,0,0" Text="Entrar" TextColor="white" TextTransform="None" HeightRequest="40" BackgroundColor="black" CornerRadius="16"/>
+
+            <controls:ExibirIcone Icone="LogoTrinca" FontSize="40" HorizontalTextAlignment="Center" HintColor="#231F20" VerticalOptions="EndAndExpand" Margin="0,0,0,30"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
