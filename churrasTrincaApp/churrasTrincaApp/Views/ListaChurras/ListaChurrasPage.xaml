@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:churrasTrincaApp.Controls"
+             xmlns:listaChurras="clr-namespace:churrasTrincaApp.ViewModels.ListaChurras"
+             x:Class="churrasTrincaApp.Views.ListaChurras.ListaChurrasPage"
+             x:Name="listaChurrasPage">
+    
+    <ContentPage.BindingContext>
+        <listaChurras:ListaChurrasViewModel/>
+    </ContentPage.BindingContext>
+
+    <controls:BasePage.Body>
+        <CollectionView TranslationY="130" ItemsSource="{Binding CardsChurras}" ItemsLayout="VerticalGrid, 2" Margin="5,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="175" RowDefinitions="130" Padding="10">
+                        <Frame Padding="20,15" >
+
+                            <Grid RowDefinitions="*, auto">
+                                <Label Text="{Binding DateChurras, StringFormat='{0:dd/MM}'}" TextColor="Black" FontFamily="TrincaExtraBold800" FontSize="18"/>
+                                <Label Text="{Binding Descricao}" TextColor="Black" FontFamily="TrincaBold700" Margin="0,25,0,0" FontSize="12"/>
+
+                                <StackLayout Grid.Row="1" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                    <controls:ExibirIcone Margin="0,3,0,0" Icone="People" FontSize="11" HintColor="{DynamicResource PrimaryColorTrinca}"/>
+                                    <Label Grid.Row="1" FontFamily="TrincaMedium500" Text="{Binding Quantidade}" FontSize="11" TextColor="Black"/>
+                                </StackLayout>
+
+                                <StackLayout Grid.Row="1" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                    <controls:ExibirIcone Margin="0,3,0,0" Icone="Dolar" FontSize="11" HintColor="{DynamicResource PrimaryColorTrinca}"/>
+                                    <Label Grid.Row="1" Text="{Binding Valor, StringFormat='{0:C0}'}" FontFamily="TrincaMedium500" FontSize="11" TextColor="Black"/>
+                                </StackLayout>
+
+                            </Grid>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={Reference listaChurrasPage}, Path=BindingContext.DetalharListaCommand}" CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </controls:BasePage.Body>
+</controls:BasePage>

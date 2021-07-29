@@ -2,15 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:churrasTrincaApp.Controls"
-             xmlns:login="clr-namespace:churrasTrincaApp.ViewModels.Login" x:DataType="login:LoginPageViewModel"
+             xmlns:login="clr-namespace:churrasTrincaApp.ViewModels.Login"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
-             NavigationPage.HasNavigationBar="False"    
+             NavigationPage.HasNavigationBar="False"
              x:Class="churrasTrincaApp.Views.Login.LoginPage"
              BackgroundColor="{DynamicResource PrimaryColorTrinca}">
+
+    <ContentPage.BindingContext>
+        <login:LoginPageViewModel/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <StackLayout HorizontalOptions="CenterAndExpand">
-            <Label Text="Agenda de Churras" FontFamily="TrincaExtraBold800" FontSize="22" TextColor="Black" Margin="0,70,0,0"/>
+            <Label Style="{DynamicResource TituloChurras}" Margin="0,70,0,0"/>
             
             <Label Text="Login" FontFamily="TrincaBold700" Margin="0,100,0,3" FontSize="11" TextColor="Black"/>
 
@@ -42,9 +47,17 @@
 
             </Grid>
 
-            <Button Margin="0,50,0,0" Text="Entrar" TextColor="white" TextTransform="None" HeightRequest="40" BackgroundColor="black" CornerRadius="16"/>
+            <Button 
+                Margin="0,50,0,0" 
+                Text="Entrar" 
+                TextColor="white" 
+                TextTransform="None" 
+                HeightRequest="40" 
+                BackgroundColor="black" 
+                CornerRadius="16"
+                Command="{Binding LogarCommand}"/>
 
-            <controls:ExibirIcone Icone="LogoTrinca" FontSize="40" HorizontalTextAlignment="Center" HintColor="#231F20" VerticalOptions="EndAndExpand" Margin="0,0,0,30"/>
+            <controls:ExibirIcone HintColor="black" Style="{DynamicResource IconeTrinca}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

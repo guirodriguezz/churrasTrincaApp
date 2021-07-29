@@ -33,21 +33,29 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Login\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Controls\EntryTrinca.xaml.cs">
       <DependentUpon>EntryTrinca.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DetalhesChurras\DetalhesChurrasPage.xaml.cs">
+      <DependentUpon>DetalhesChurrasPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Controls\BasePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Controls\EntryTrinca.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Controls\ExibirIcone.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DetalhesChurras\DetalhesChurrasPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ListaChurras\ListaChurrasPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Login\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

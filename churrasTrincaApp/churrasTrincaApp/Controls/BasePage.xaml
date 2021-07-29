@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:churrasTrincaApp.Controls"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="churrasTrincaApp.Controls.BasePage"
+             BackgroundColor="#FAFAFA">
+    <ContentPage.Content>
+        <Grid RowDefinitions="190, *">
+            <StackLayout BackgroundColor="{DynamicResource PrimaryColorTrinca}">
+                <Label Style="{DynamicResource TituloChurras}" Margin="0,50,0,0"/>
+            </StackLayout>
+
+            <StackLayout x:Name="pageContent" Grid.RowSpan="2">
+                
+            </StackLayout>
+            
+            <controls:ExibirIcone Grid.Row="1" Style="{DynamicResource IconeTrinca}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

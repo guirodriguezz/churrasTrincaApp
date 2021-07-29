@@ -5,6 +5,12 @@
         [StringValue("?")]
         Default,
         [StringValue("A")]
-        LogoTrinca
+        LogoTrinca,
+        [StringValue("B")]
+        Grill,
+        [StringValue("C")]
+        People,
+        [StringValue("D")]
+        Dolar
     }
 }

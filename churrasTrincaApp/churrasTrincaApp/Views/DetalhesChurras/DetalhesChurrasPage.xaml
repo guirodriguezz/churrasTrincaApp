@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:churrasTrincaApp.Controls"
+             xmlns:detalhesChurras="clr-namespace:churrasTrincaApp.ViewModels.DetalhesChurras"
+             x:Class="churrasTrincaApp.Views.DetalhesChurras.DetalhesChurrasPage">
+    <ContentPage.BindingContext>
+        <detalhesChurras:DetalhesChurrasViewModel/>
+    </ContentPage.BindingContext>
+    
+    <controls:BasePage.Body>
+        <StackLayout>
+            <Frame TranslationY="130" HorizontalOptions="CenterAndExpand" WidthRequest="320" VerticalOptions="StartAndExpand">
+                <Grid ColumnDefinitions="*, auto">
+                    <Label Text="{Binding CardsChurras.DateChurras, StringFormat='{0:dd/MM}'}" FontFamily="TrincaExtraBold800" TextColor="Black" FontSize="18"/>
+                    <Label Text="{Binding CardsChurras.Descricao}" Margin="0,25,0,0" FontFamily="TrincaBold700" TextColor="Black" FontSize="22"/>
+
+                    <StackLayout Grid.Column="1" Orientation="Horizontal">
+                        <controls:ExibirIcone Margin="0,3,0,0" Icone="People" FontSize="11" HintColor="{DynamicResource PrimaryColorTrinca}"/>
+                        <Label FontFamily="TrincaMedium500" Text="{Binding CardsChurras.Quantidade}" FontSize="11" TextColor="Black"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Orientation="Horizontal" Margin="0,25,0,0">
+                        <controls:ExibirIcone Margin="0,3,0,0" Icone="Dolar" FontSize="11" HintColor="{DynamicResource PrimaryColorTrinca}"/>
+                        <Label Grid.Row="1" Text="{Binding CardsChurras.Valor, StringFormat='{0:C0}'}" FontFamily="TrincaMedium500" FontSize="11" TextColor="Black"/>
+                    </StackLayout>
+
+                </Grid>
+                
+            </Frame>
+        </StackLayout>
+    </controls:BasePage.Body>
+</controls:BasePage>

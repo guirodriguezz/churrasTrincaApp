@@ -1,16 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:churrasTrincaApp.Controls"
              x:Class="churrasTrincaApp.App">
     <Application.Resources>
         <ResourceDictionary>
             <!--Cores gerais-->
             <Color x:Key="PrimaryColorTrinca">#FFD836</Color>
+            <Color x:Key="SecondaryLabelDefault">#000</Color>
+            <Color x:Key="LogoColor">#c8c8c8</Color>
+
             <!--Fonte dos ícones-->
             <OnPlatform x:TypeArguments="x:String" x:Key="FontIcon">
                 <On Platform="Android" Value="TrincaIcons" />
                 <On Platform="iOS" Value="TrincaIcons" />
             </OnPlatform>
+
+            <!--Estilos-->
+            <Style x:Key="TituloChurras" TargetType="Label">
+                <Setter Property="FontFamily" Value="TrincaExtraBold800" />
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="TextColor" Value="{DynamicResource SecondaryLabelDefault}"/>
+                <Setter Property="Text" Value="Agenda de Churras"/>
+            </Style>
+
+            <Style x:Key="IconeTrinca" TargetType="controls:ExibirIcone">
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="Icone" Value="LogoTrinca"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="HintColor" Value="{DynamicResource LogoColor}"/>
+                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+                <Setter Property="Margin" Value="0,0,0,30"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
