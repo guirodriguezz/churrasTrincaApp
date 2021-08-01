@@ -11,6 +11,8 @@
         [StringValue("C")]
         People,
         [StringValue("D")]
-        Dolar
+        Dolar,
+        [StringValue("E")]
+        BackPage
     }
 }

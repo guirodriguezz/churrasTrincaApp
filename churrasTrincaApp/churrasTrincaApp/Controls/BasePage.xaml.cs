@@ -8,11 +8,18 @@ namespace churrasTrincaApp.Controls
     public partial class BasePage : ContentPage
     {
         public static readonly BindableProperty BodyProperty = BindableProperty.Create(nameof(Body), typeof(View), typeof(BasePage), null);
+        public static readonly BindableProperty TemVoltarProperty = BindableProperty.Create(nameof(TemVoltar), typeof(bool), typeof(BasePage), true);
 
         public View Body
         {
             get { return (View)GetValue(BodyProperty); }
-            set { SetValue(BodyProperty, value); }
+            set => SetValue(BodyProperty, value);
+        }
+
+        public bool TemVoltar
+        {
+            get { return (bool)GetValue(TemVoltarProperty); }
+            set => SetValue(TemVoltarProperty, value);
         }
 
         public BasePage()
@@ -28,6 +35,16 @@ namespace churrasTrincaApp.Controls
             {
                 pageContent.Children.Add(Body);
             }
+
+            if (propertyName == nameof(TemVoltar))
+            {
+                backButton.IsVisible = TemVoltar;
+            }
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        {
+
         }
     }
 }

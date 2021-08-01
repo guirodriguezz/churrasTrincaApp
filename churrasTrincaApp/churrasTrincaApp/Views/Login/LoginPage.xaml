@@ -23,6 +23,7 @@
                 <Frame HasShadow="False" BorderColor="AntiqueWhite" Padding="{OnPlatform Android='5,0,5,0', iOS='8,0,8,0'}" Margin="{OnPlatform Android='0,0,0,0', iOS='0,0,0,0'}" />
 
                 <controls:EntryTrinca
+                    Text="{Binding Username}"
                     HeightRequest="{OnPlatform iOS=40}"
                     VerticalOptions="FillAndExpand"
                     Placeholder="e-mail"
@@ -37,6 +38,7 @@
                 <Frame HasShadow="False" BorderColor="AntiqueWhite" Padding="{OnPlatform Android='5,0,5,0', iOS='8,0,8,0'}" Margin="{OnPlatform Android='0,0,0,0', iOS='0,0,0,0'}" />
 
                 <controls:EntryTrinca
+                    Text="{Binding Password}"
                     HeightRequest="{OnPlatform iOS=40}"
                     VerticalOptions="FillAndExpand"
                     Placeholder="senha"

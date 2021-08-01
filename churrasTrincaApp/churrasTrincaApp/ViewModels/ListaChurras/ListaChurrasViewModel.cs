@@ -12,11 +12,11 @@ namespace churrasTrincaApp.ViewModels.ListaChurras
     public class ListaChurrasViewModel : BaseViewModel
     {
         #region Variaveis
-        private ObservableCollection<CardsChurrasModel> _cardsChurras;
+        private ObservableCollection<DataCardsChurras> _cardsChurras;
         #endregion
 
         #region Propriedades
-        public ObservableCollection<CardsChurrasModel> CardsChurras
+        public ObservableCollection<DataCardsChurras> CardsChurras
         {
             get => _cardsChurras;
             set
@@ -35,12 +35,12 @@ namespace churrasTrincaApp.ViewModels.ListaChurras
         public ListaChurrasViewModel()
         {
             CardsChurras = BaseServices.CardsChurras();
-            DetalharListaCommand = new Command<CardsChurrasModel>(DetalharLista);
+            DetalharListaCommand = new Command<DataCardsChurras>(DetalharLista);
         }
         #endregion
 
         #region Methods
-        public async void DetalharLista(CardsChurrasModel cardsChurrasModel)
+        public async void DetalharLista(DataCardsChurras cardsChurrasModel)
         {
             DetalhesChurrasViewModel viewModel = new DetalhesChurrasViewModel();
             viewModel.CarregarDetalhes(cardsChurrasModel);

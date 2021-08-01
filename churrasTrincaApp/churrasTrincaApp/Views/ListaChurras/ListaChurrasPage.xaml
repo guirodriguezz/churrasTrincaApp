@@ -4,6 +4,7 @@
              xmlns:controls="clr-namespace:churrasTrincaApp.Controls"
              xmlns:listaChurras="clr-namespace:churrasTrincaApp.ViewModels.ListaChurras"
              x:Class="churrasTrincaApp.Views.ListaChurras.ListaChurrasPage"
+             TemVoltar="False"
              x:Name="listaChurrasPage">
     
     <ContentPage.BindingContext>
@@ -18,17 +19,17 @@
                         <Frame Padding="20,15" >
 
                             <Grid RowDefinitions="*, auto">
-                                <Label Text="{Binding DateChurras, StringFormat='{0:dd/MM}'}" TextColor="Black" FontFamily="TrincaExtraBold800" FontSize="18"/>
-                                <Label Text="{Binding Descricao}" TextColor="Black" FontFamily="TrincaBold700" Margin="0,25,0,0" FontSize="12"/>
+                                <Label Text="{Binding Date, StringFormat='{0:dd/MM}'}" TextColor="Black" FontFamily="TrincaExtraBold800" FontSize="18"/>
+                                <Label Text="{Binding Title}" TextColor="Black" FontFamily="TrincaBold700" Margin="0,25,0,0" FontSize="12"/>
 
                                 <StackLayout Grid.Row="1" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
                                     <controls:ExibirIcone Margin="0,3,0,0" Icone="People" FontSize="11" HintColor="{DynamicResource PrimaryColorTrinca}"/>
-                                    <Label Grid.Row="1" FontFamily="TrincaMedium500" Text="{Binding Quantidade}" FontSize="11" TextColor="Black"/>
+                                    <Label Grid.Row="1" FontFamily="TrincaMedium500" Text="12" FontSize="11" TextColor="Black"/>
                                 </StackLayout>
 
                                 <StackLayout Grid.Row="1" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                     <controls:ExibirIcone Margin="0,3,0,0" Icone="Dolar" FontSize="11" HintColor="{DynamicResource PrimaryColorTrinca}"/>
-                                    <Label Grid.Row="1" Text="{Binding Valor, StringFormat='{0:C0}'}" FontFamily="TrincaMedium500" FontSize="11" TextColor="Black"/>
+                                    <Label Grid.Row="1" Text="{Binding ValuePerPerson, StringFormat='{0:C0}'}" FontFamily="TrincaMedium500" FontSize="11" TextColor="Black"/>
                                 </StackLayout>
 
                             </Grid>

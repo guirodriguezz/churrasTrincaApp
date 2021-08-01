@@ -10,23 +10,40 @@
     
     <controls:BasePage.Body>
         <StackLayout>
-            <Frame TranslationY="130" HorizontalOptions="CenterAndExpand" WidthRequest="320" VerticalOptions="StartAndExpand">
-                <Grid ColumnDefinitions="*, auto">
-                    <Label Text="{Binding CardsChurras.DateChurras, StringFormat='{0:dd/MM}'}" FontFamily="TrincaExtraBold800" TextColor="Black" FontSize="18"/>
-                    <Label Text="{Binding CardsChurras.Descricao}" Margin="0,25,0,0" FontFamily="TrincaBold700" TextColor="Black" FontSize="22"/>
+            <Frame Margin="0,130,0,90" HasShadow="False" HorizontalOptions="CenterAndExpand" WidthRequest="320" VerticalOptions="StartAndExpand">
+                <Grid RowDefinitions="70, *">
+                    <Grid ColumnDefinitions="*, auto">
+                        <Label Text="{Binding CardsChurras.Date, StringFormat='{0:dd/MM}'}" FontFamily="TrincaExtraBold800" TextColor="Black" FontSize="18"/>
+                        <Label Text="{Binding CardsChurras.Title}" Margin="0,25,0,0" FontFamily="TrincaBold700" TextColor="Black" FontSize="22"/>
 
-                    <StackLayout Grid.Column="1" Orientation="Horizontal">
-                        <controls:ExibirIcone Margin="0,3,0,0" Icone="People" FontSize="11" HintColor="{DynamicResource PrimaryColorTrinca}"/>
-                        <Label FontFamily="TrincaMedium500" Text="{Binding CardsChurras.Quantidade}" FontSize="11" TextColor="Black"/>
-                    </StackLayout>
+                        <StackLayout Grid.Column="1" Orientation="Horizontal">
+                            <controls:ExibirIcone Margin="0,3,0,0" Icone="People" FontSize="11" HintColor="{DynamicResource PrimaryColorTrinca}"/>
+                            <Label FontFamily="TrincaMedium500" Text="{Binding ListPeople.Count}" FontSize="11" TextColor="Black"/>
+                        </StackLayout>
 
-                    <StackLayout Grid.Column="1" Orientation="Horizontal" Margin="0,25,0,0">
-                        <controls:ExibirIcone Margin="0,3,0,0" Icone="Dolar" FontSize="11" HintColor="{DynamicResource PrimaryColorTrinca}"/>
-                        <Label Grid.Row="1" Text="{Binding CardsChurras.Valor, StringFormat='{0:C0}'}" FontFamily="TrincaMedium500" FontSize="11" TextColor="Black"/>
-                    </StackLayout>
+                        <StackLayout Grid.Column="1" Orientation="Horizontal" Margin="0,25,0,0">
+                            <controls:ExibirIcone Margin="0,3,0,0" Icone="Dolar" FontSize="11" HintColor="{DynamicResource PrimaryColorTrinca}"/>
+                            <Label Text="{Binding CardsChurras.ValuePerPerson, StringFormat='{0:C0}'}" FontFamily="TrincaMedium500" FontSize="11" TextColor="Black"/>
+                        </StackLayout>
 
+                    </Grid>
+
+                    <CollectionView Grid.Row="1" ItemsSource="{Binding ListPeople}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                        <CheckBox Color="#998220"/>
+                                        <Label Text="{Binding Nome}" FontFamily="TrincaBold700" TextColor="black" FontSize="13" Margin="0,6,0,0"/>
+                                        <Label Text="{Binding ValorPessoa, StringFormat='{0:C2}'}" FontFamily="TrincaBold700" TextColor="black" FontSize="13" Margin="0,7,0,0" HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+
+                                    <Line BackgroundColor="#E5C231" TranslationY="-5" HeightRequest="0.4"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </Grid>
-                
             </Frame>
         </StackLayout>
     </controls:BasePage.Body>
