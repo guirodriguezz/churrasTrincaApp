@@ -13,6 +13,8 @@ Para o desenvolvimento deste site utilizei as seguintes tecnologias:
   <img src="https://img.shields.io/badge/Xamarin-3498DB?style=for-the-badge&logo=xamarin&logoColor=white" alt="Xamarin"/> 
 </p>
 
+O projeto foi criado usado o padrão de projeto MVVM (sem frameworks, como Prism), e também refit para consumir serviço Rest.
+
 <h1 align="left"><strong>🤝 Colaboradores</strong></h1>
 
 <table>
