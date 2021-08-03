@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:controls="clr-namespace:churrasTrincaApp.Controls"
+             xmlns:converters="clr-namespace:churrasTrincaApp.Converters"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:listachurras="clr-namespace:churrasTrincaApp.ViewModels.ListaChurras"
+             x:Class="churrasTrincaApp.Views.ListaChurras.CriarChurrasPage">
+    <controls:BasePage.BindingContext>
+        <listachurras:CriarChurrasViewModel/>
+    </controls:BasePage.BindingContext>
+
+    <controls:BasePage.Resources>
+        <converters:MoedaConverter x:Key="MoedaConverter"/>
+    </controls:BasePage.Resources>
+
+    <controls:BasePage.Body>
+        <Frame Margin="0,130,0,90" HorizontalOptions="CenterAndExpand" WidthRequest="320" VerticalOptions="StartAndExpand">
+            <StackLayout>
+                <controls:ExibirIcone HorizontalOptions="Start" VerticalOptions="Start" Icone="BackPage" FontSize="20">
+                    <controls:ExibirIcone.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding VoltarCommand}"/>
+                    </controls:ExibirIcone.GestureRecognizers>
+                </controls:ExibirIcone>
+                
+                <StackLayout TranslationY="-10" IsVisible="{Binding AddChurrasVisible}">
+                    <Label Text="Criar Novo Churras" Margin="0,15,0,0" FontFamily="TrincaBold700" TextColor="Black" FontSize="22"/>
+                    <Label Text="Dê um título para o seu churras" Margin="5,5,0,0" FontSize="12" FontFamily="TrincaBold700"/>
+                    <Entry Text="{Binding Titulo}" Placeholder="Ex: Meu Churrasco" Keyboard="Text" Margin="{OnPlatform iOS='0,10,0,0'}" TranslationY="-10" FontFamily="TrincaRegular400" FontSize="15"/>
+
+                    <Label Text="Dê uma descrição para ele (se quiser..)" FontSize="12" Margin="5,5,0,0" FontFamily="TrincaBold700"/>
+                    <Entry Text="{Binding Descricao}" Placeholder="Ex: Churras de comemoração" Keyboard="Text" Margin="{OnPlatform iOS='0,10,0,0'}" TranslationY="-10" FontFamily="TrincaRegular400" FontSize="15"/>
+
+                    <Label Text="Que dia o churras vai rolar?" FontSize="12" Margin="5,5,0,0" FontFamily="TrincaBold700"/>
+                    <DatePicker Date="{Binding DataChurras}" Margin="{OnPlatform iOS='0,10,0,0'}" TranslationY="-10" FontFamily="TrincaRegular400" FontSize="15"/>
+                </StackLayout>
+
+                <StackLayout TranslationY="-10" IsVisible="{Binding AddPessoasVisible}">
+                    <Label Text="Adicione os participantes" Margin="0,15,0,5" FontFamily="TrincaBold700" TextColor="Black" FontSize="22"/>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <controls:ExibirIcone Margin="0,3,0,0" Icone="People" FontSize="11" HintColor="{DynamicResource PrimaryColorTrinca}"/>
+                        <Label FontFamily="TrincaMedium500" Text="{Binding ListPeoples.Count}" FontSize="11" TextColor="Black"/>
+
+                        <controls:ExibirIcone Margin="15,3,0,0" Icone="Dolar" FontSize="11" HintColor="{DynamicResource PrimaryColorTrinca}"/>
+                        <Label Text="{Binding ValorTotal, StringFormat='{0:C2}'}" FontFamily="TrincaMedium500" FontSize="11" TextColor="Black"/>
+                    </StackLayout>
+
+                    <CollectionView Margin="0,15,0,0" ItemsSource="{Binding ListPeoples}">
+                        <CollectionView.Footer>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <CheckBox IsChecked="{Binding Confirmado}"/>
+                                    <Entry Text="{Binding NomePessoa}" Placeholder="Nome do Participante" Keyboard="Text" FontFamily="TrincaRegular400" FontSize="15"/>
+                                    <Entry Text="{Binding ValorPessoa, Converter={StaticResource MoedaConverter}}" HorizontalOptions="FillAndExpand" Placeholder="0,00" Keyboard="Numeric" FontFamily="TrincaRegular400" FontSize="15"/>
+                                </StackLayout>
+
+                                <controls:ExibirIcone Icone="Add" HorizontalOptions="Center" FontSize="25">
+                                    <controls:ExibirIcone.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding AdicionarPessoaCommand}"/>
+                                    </controls:ExibirIcone.GestureRecognizers>
+                                </controls:ExibirIcone>
+                            </StackLayout>
+                        </CollectionView.Footer>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                        <CheckBox IsChecked="{Binding Confirmed}" Color="#998220"/>
+                                        <Label Text="{Binding Name}" FontFamily="TrincaBold700" TextColor="black" FontSize="13" Margin="0,6,0,0"/>
+                                        <Label Text="{Binding value_paid, StringFormat='{0:C2}'}" FontFamily="TrincaBold700" TextColor="black" FontSize="13" Margin="0,7,0,0" HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+
+                                    <Line BackgroundColor="#E5C231" TranslationY="-5" HeightRequest="0.4"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+                <Button 
+                    Text="{Binding TextoBtn}" 
+                    VerticalOptions="EndAndExpand" 
+                    Margin="0,30,0,15" 
+                    BackgroundColor="{DynamicResource PrimaryColorTrinca}"
+                    TextColor="Black"
+                    Command="{Binding AvancarCommand}"
+                    IsEnabled="{Binding BtnAtivado}"/>
+            </StackLayout>
+        </Frame>
+    </controls:BasePage.Body>
+</controls:BasePage>

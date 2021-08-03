@@ -1,9 +1,6 @@
 ﻿using churrasTrincaApp.Models;
 using churrasTrincaApp.Models.Interfaces;
-using Newtonsoft.Json;
 using Refit;
-using System;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace churrasTrincaApp.Services
@@ -14,17 +11,18 @@ namespace churrasTrincaApp.Services
         private static IEndPoints Endpoint => RestService.For<IEndPoints>(BaseUrl);
 
         #region Gets
-        public static async Task<ApiResponse<CardsChurrasModel>> GetChurrascos(string username, string password)
+        public static async Task<ApiResponse<CardsChurrasModel>> GetChurrascos()
         {
-            LoginModel login = new LoginModel()
-            {
-                Username = username,
-                Password = password
-            };
+            string token = SharedServices.SavedToken.Token;
 
-            string serialized = JsonConvert.SerializeObject(login);
+            return await Endpoint.GetChurrascos(token);
+        }
 
-            return await Endpoint.GetChurrascos(serialized); ;
+        public static async Task<ApiResponse<ListPeopleModel>> GetDetalhesChurrasco(int id)
+        {
+            string token = SharedServices.SavedToken.Token;
+
+            return await Endpoint.GetDetalhesChurrasco(id, token);
         }
         #endregion
 
@@ -37,105 +35,26 @@ namespace churrasTrincaApp.Services
                 Password = password
             };
 
-            string serialized = JsonConvert.SerializeObject(login);
+            SharedServices.Saveduser = login;
 
-            return await Endpoint.GetAutentication(serialized); ;
+            return await Endpoint.GetAutentication(login);
+        }
+
+        public static async Task<ApiResponse<string>> CreateChurras(DataCardsChurras churras)
+        {
+            string token = SharedServices.SavedToken.Token;
+
+            return await Endpoint.CreateChurras(token, churras);
         }
         #endregion
 
-        public static ObservableCollection<DataCardsChurras> CardsChurras()
+        #region Delete
+        public static async Task<ApiResponse<string>> DeleteChurras(int id)
         {
-            ObservableCollection<DataCardsChurras> cardsChurras = new ObservableCollection<DataCardsChurras>()
-            {
-                new DataCardsChurras
-                {
-                    Id = 1,
-                    Date = DateTimeOffset.Now,
-                    Title = "Aniversário do Gui",
-                    Description = "",
-                    ValuePerPerson = 50.0
-                },
+            string token = SharedServices.SavedToken.Token;
 
-                new DataCardsChurras
-                {
-                    Id = 2,
-                    Date = DateTimeOffset.Now,
-                    Title = "Final de Ano",
-                    Description = "",
-                    ValuePerPerson = 200.0
-                },
-
-               new DataCardsChurras
-               {
-                    Id = 3,
-                    Date = DateTimeOffset.Now,
-                    Title = "Sem motivo",
-                    Description = "",
-                    ValuePerPerson = 30.0
-               },
-
-               new DataCardsChurras
-               {
-                    Id = 4,
-                    Date = DateTimeOffset.Now,
-                    Title = "Sem motivo",
-                    Description = "",
-                    ValuePerPerson = 30.0
-               },
-            };
-
-            return cardsChurras;
+            return await Endpoint.DeleteChurras(id, token);
         }
-
-        public static ObservableCollection<ListPeopleModel> ListPeople()
-        {
-            ObservableCollection<ListPeopleModel> listPeople = new ObservableCollection<ListPeopleModel>()
-            {
-                new ListPeopleModel
-                {
-                    Nome = "Guilherme",
-                    ValorPessoa = 250
-                },
-
-                new ListPeopleModel
-                {
-                    Nome = "Maria",
-                    ValorPessoa = 150
-                },
-
-                new ListPeopleModel
-                {
-                    Nome = "João",
-                    ValorPessoa = 50
-                },
-
-                new ListPeopleModel
-                {
-                    Nome = "Pedro",
-                    ValorPessoa = 255
-                },
-
-                new ListPeopleModel
-                {
-                    Nome = "Fernando",
-                    ValorPessoa = 15
-                },
-
-                new ListPeopleModel
-                {
-                    Nome = "Carla",
-                    ValorPessoa = 35
-                },
-
-                new ListPeopleModel
-                {
-                    Nome = "Flavia",
-                    ValorPessoa = 555
-                }
-            };
-
-            return listPeople;
-        }
+        #endregion
     }
-
 }

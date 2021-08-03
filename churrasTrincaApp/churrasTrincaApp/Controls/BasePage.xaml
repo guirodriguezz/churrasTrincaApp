@@ -2,21 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:churrasTrincaApp.Controls"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="True"
              NavigationPage.HasNavigationBar="False"
              x:Class="churrasTrincaApp.Controls.BasePage"
              BackgroundColor="#FAFAFA">
 
     <ContentPage.Content>
         <Grid RowDefinitions="190, *">
-            <Grid BackgroundColor="{DynamicResource PrimaryColorTrinca}">
-                <controls:ExibirIcone HorizontalOptions="StartAndExpand" VerticalOptions="Start"  x:Name="backButton" Icone="BackPage" Margin="20,25,0,0" FontSize="25">
-                    <controls:ExibirIcone.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                    </controls:ExibirIcone.GestureRecognizers>
-                </controls:ExibirIcone>
-                
+            <Grid BackgroundColor="{DynamicResource PrimaryColorTrinca}">          
                 <Label Style="{DynamicResource TituloChurras}" Margin="0,55,0,0"/>
             </Grid>
 

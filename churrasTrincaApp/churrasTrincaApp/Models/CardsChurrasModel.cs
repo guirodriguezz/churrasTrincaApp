@@ -7,13 +7,13 @@ namespace churrasTrincaApp.Models
     public partial class CardsChurrasModel
     {
         [JsonProperty("data")]
-        public ObservableCollection<DataCardsChurras> DataCardsChurras { get; set; }
+        public ObservableCollection<DataCardsChurras> Data { get; set; }
     }
 
     public partial class DataCardsChurras
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -22,9 +22,11 @@ namespace churrasTrincaApp.Models
         public string Description { get; set; }
 
         [JsonProperty("date")]
-        public DateTimeOffset Date { get; set; }
+        public DateTime Date { get; set; }
 
-        [JsonProperty("value_per_person")]
-        public double ValuePerPerson { get; set; }
+        public double value_per_person { get; set; }
+
+        [JsonProperty("participants")]
+        public ObservableCollection<DataListPeople> Participants { get; set; }
     }
 }

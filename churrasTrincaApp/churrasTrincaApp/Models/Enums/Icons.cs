@@ -13,6 +13,12 @@
         [StringValue("D")]
         Dolar,
         [StringValue("E")]
-        BackPage
+        BackPage,
+        [StringValue("F")]
+        Add,
+        [StringValue("G")]
+        Pencil,
+        [StringValue("H")]
+        Trash
     }
 }

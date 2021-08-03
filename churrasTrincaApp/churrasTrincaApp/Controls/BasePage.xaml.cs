@@ -35,16 +35,6 @@ namespace churrasTrincaApp.Controls
             {
                 pageContent.Children.Add(Body);
             }
-
-            if (propertyName == nameof(TemVoltar))
-            {
-                backButton.IsVisible = TemVoltar;
-            }
-        }
-
-        private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
-        {
-
         }
     }
 }

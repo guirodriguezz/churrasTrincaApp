@@ -72,6 +72,8 @@ namespace churrasTrincaApp.ViewModels.Login
             {
                 try
                 {
+                    UserDialogs.Instance.ShowLoading("Aguarde....");
+
                     ApiResponse<TokenModel> response = await BaseServices.GetAutentication(Username, Password);
 
                     if (response.IsSuccessStatusCode)
@@ -88,6 +90,10 @@ namespace churrasTrincaApp.ViewModels.Login
                 {
                     Exception error = ex;
                     await UserDialogs.Instance.AlertAsync("Ocorreu um erro ao processar a sua solicitação.", "ATENÇÃO", "Ok");
+                }
+                finally
+                {
+                    UserDialogs.Instance.HideLoading();
                 }
             }
         }

@@ -1,8 +1,13 @@
-﻿using churrasTrincaApp.Models;
+﻿using Acr.UserDialogs;
+using churrasTrincaApp.Models;
 using churrasTrincaApp.Services;
 using MvvmHelpers;
+using Refit;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace churrasTrincaApp.ViewModels.DetalhesChurras
 {
@@ -10,7 +15,7 @@ namespace churrasTrincaApp.ViewModels.DetalhesChurras
     {
         #region Variaveis
         private DataCardsChurras _cardsChurras;
-        private ObservableCollection<ListPeopleModel> _listPeople;
+        private ObservableCollection<DataListPeople> _listPeople;
         #endregion
 
         #region Propriedades
@@ -24,7 +29,7 @@ namespace churrasTrincaApp.ViewModels.DetalhesChurras
             }
         }
 
-        public ObservableCollection<ListPeopleModel> ListPeople
+        public ObservableCollection<DataListPeople> ListPeople
         {
             get => _listPeople;
             set
@@ -36,20 +41,42 @@ namespace churrasTrincaApp.ViewModels.DetalhesChurras
         #endregion
 
         #region Commands
+        public ICommand VoltarCommand { get; set; }
         #endregion
 
         #region Construtor
         public DetalhesChurrasViewModel()
         {
-
+            VoltarCommand = new Command(async () => await Voltar());
         }
         #endregion
 
         #region Methods
-        public void CarregarDetalhes(DataCardsChurras cardsChurrasModel)
+        public async Task CarregarDetalhes(DataCardsChurras cardsChurrasModel)
         {
-            CardsChurras = cardsChurrasModel;
-            ListPeople = BaseServices.ListPeople();
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Aguarde....");
+
+                CardsChurras = cardsChurrasModel;
+                ApiResponse<ListPeopleModel> response = await BaseServices.GetDetalhesChurrasco(Convert.ToInt32(cardsChurrasModel.Id));
+
+                ListPeople = response.IsSuccessStatusCode ? response.Content.Data : null;
+            }
+            catch (Exception ex)
+            {
+                Exception error = ex;
+                await UserDialogs.Instance.AlertAsync("Ocorreu um erro ao processar a sua solicitação.", "ATENÇÃO", "Ok");
+            }
+            finally
+            {
+                UserDialogs.Instance.HideLoading();
+            }
+        }
+
+        public async Task Voltar()
+        {
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
         #endregion
     }
