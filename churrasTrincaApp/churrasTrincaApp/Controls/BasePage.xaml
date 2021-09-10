@@ -17,6 +17,12 @@
             </StackLayout>
             
             <controls:ExibirIcone Grid.Row="1" Style="{DynamicResource IconeTrinca}"/>
+
+            <Label Text="Logout" Grid.Row="0" Margin="0,18,0,0" HorizontalOptions="Center" TextDecorations="Underline" VerticalOptions="Start" Padding="10" FontSize="16" TextColor="Black" FontFamily="TrincaRegular400">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

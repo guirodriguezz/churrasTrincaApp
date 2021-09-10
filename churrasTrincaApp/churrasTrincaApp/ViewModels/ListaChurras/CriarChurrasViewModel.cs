@@ -57,9 +57,6 @@ namespace churrasTrincaApp.ViewModels.ListaChurras
             set
             {
                 _titulo = value;
-
-                BtnAtivado = !string.IsNullOrEmpty(Titulo) && !string.IsNullOrEmpty(Descricao);
-
                 OnPropertyChanged(nameof(Titulo));
             }
         }
@@ -69,8 +66,6 @@ namespace churrasTrincaApp.ViewModels.ListaChurras
             get => _descricao;
             set
             {
-                BtnAtivado = !string.IsNullOrEmpty(Titulo) && !string.IsNullOrEmpty(Descricao);
-
                 _descricao = value;
                 OnPropertyChanged(nameof(Descricao));
             }

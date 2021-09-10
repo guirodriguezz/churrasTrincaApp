@@ -10,5 +10,15 @@ namespace churrasTrincaApp.Views.ListaChurras
         {
             InitializeComponent();
         }
+
+        void Titulo_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            btnAvancar.IsEnabled = !string.IsNullOrEmpty(titulo.Text) && !string.IsNullOrEmpty(descricao.Text);
+        }
+
+        void Descricao_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            btnAvancar.IsEnabled = !string.IsNullOrEmpty(titulo.Text) && !string.IsNullOrEmpty(descricao.Text);
+        }
     }
 }

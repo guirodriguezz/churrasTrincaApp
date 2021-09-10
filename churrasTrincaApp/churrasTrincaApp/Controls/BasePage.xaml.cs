@@ -1,4 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
+using churrasTrincaApp.Services;
+using churrasTrincaApp.Views.Login;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -35,6 +37,12 @@ namespace churrasTrincaApp.Controls
             {
                 pageContent.Children.Add(Body);
             }
+        }
+
+        void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        {
+            SharedServices.RemoveUser();
+            Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
     }
 }

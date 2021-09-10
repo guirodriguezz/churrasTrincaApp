@@ -25,13 +25,13 @@
                 <StackLayout TranslationY="-10" IsVisible="{Binding AddChurrasVisible}">
                     <Label Text="Criar Novo Churras" Margin="0,15,0,0" FontFamily="TrincaBold700" TextColor="Black" FontSize="22"/>
                     <Label Text="Dê um título para o seu churras" Margin="5,5,0,0" FontSize="12" FontFamily="TrincaBold700"/>
-                    <Entry Text="{Binding Titulo}" Placeholder="Ex: Meu Churrasco" Keyboard="Text" Margin="{OnPlatform iOS='0,10,0,0'}" TranslationY="-10" FontFamily="TrincaRegular400" FontSize="15"/>
+                    <Entry TextChanged="Titulo_TextChanged" x:Name="titulo" Text="{Binding Titulo}" Placeholder="Ex: Meu Churrasco" AutomationId="MyEntryTitle" Keyboard="Text" Margin="{OnPlatform iOS='0,10,0,0'}" TranslationY="-10" FontFamily="TrincaRegular400" FontSize="15"/>
 
-                    <Label Text="Dê uma descrição para ele (se quiser..)" FontSize="12" Margin="5,5,0,0" FontFamily="TrincaBold700"/>
-                    <Entry Text="{Binding Descricao}" Placeholder="Ex: Churras de comemoração" Keyboard="Text" Margin="{OnPlatform iOS='0,10,0,0'}" TranslationY="-10" FontFamily="TrincaRegular400" FontSize="15"/>
+                    <Label Text="Dê uma descrição para ele" FontSize="12" Margin="5,5,0,0" FontFamily="TrincaBold700"/>
+                    <Entry TextChanged="Descricao_TextChanged" x:Name="descricao" Text="{Binding Descricao}" Placeholder="Ex: Churras de comemoração" AutomationId="MyEntryDescription" Keyboard="Text" Margin="{OnPlatform iOS='0,10,0,0'}" TranslationY="-10" FontFamily="TrincaRegular400" FontSize="15"/>
 
                     <Label Text="Que dia o churras vai rolar?" FontSize="12" Margin="5,5,0,0" FontFamily="TrincaBold700"/>
-                    <DatePicker Date="{Binding DataChurras}" Margin="{OnPlatform iOS='0,10,0,0'}" TranslationY="-10" FontFamily="TrincaRegular400" FontSize="15"/>
+                    <DatePicker Date="{Binding DataChurras}" Margin="{OnPlatform iOS='0,10,0,0'}" TranslationY="-10" AutomationId="MyEntryDate" FontFamily="TrincaRegular400" FontSize="15"/>
                 </StackLayout>
 
                 <StackLayout TranslationY="-10" IsVisible="{Binding AddPessoasVisible}">
@@ -78,7 +78,9 @@
                     </CollectionView>
                 </StackLayout>
 
-                <Button 
+                <Button
+                    AutomationId="MyButtonNext"
+                    x:Name="btnAvancar"
                     Text="{Binding TextoBtn}" 
                     VerticalOptions="EndAndExpand" 
                     Margin="0,30,0,15" 

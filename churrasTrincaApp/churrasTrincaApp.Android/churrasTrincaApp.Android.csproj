@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -102,7 +101,7 @@
   <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\churrasTrincaApp\churrasTrincaApp.csproj">
-      <Project>{41D77688-F044-4FE4-8AB7-3A5409B2E3FF}</Project>
+      <Project>{C18DE2DE-95E4-4E1C-AFA7-BB8ABAD85D6B}</Project>
       <Name>churrasTrincaApp</Name>
     </ProjectReference>
   </ItemGroup>
